@@ -1,0 +1,10 @@
+# camera parameters for src/gnm_locobot.launch
+video_device: "/dev/video0" # change this to your video device path
+image_width: 160 
+image_height: 120 
+# ros1에선 "yuyv"로 적으면 publish시 rgb로 전환됐지만,
+# ros2에선 "yuyv2rgb"로 써줘야 rgb로 변환됨.
+pixel_format: "yuyv2rgb" 
+camera_frame_id: "usb_cam"
+io_method: "mmap"
+framerate: 9
