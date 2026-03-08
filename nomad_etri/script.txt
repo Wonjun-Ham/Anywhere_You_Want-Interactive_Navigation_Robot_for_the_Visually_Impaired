@@ -1,0 +1,19 @@
+# deployment
+새로운 카메라를 사용하여 navigation, exploration을 실행시키기 위해서는, 이미지 topic과 카메라 파라미터 정보를 추가해줘야 합니다. 
+1. image topic 수정 위치 
+/vln_nomad/deployment/src/topic_names.py
+2. camera parameter 
+/vln_nomad/train/vint_train/data/data_config.yaml
+-------------------------------------------------------------------------------------------------------------
+# train : model 학습시키는 방법
+1. 저장된 bag file에서 image, odometry 데이터를 추출합니다. 
+(/vln_nomad/train)$ python3 process_bags.py --dataset-name <dataset 이름> --input-dir <bag파일 저장되어있는 폴더> --out-dir <dataset을 저장할 폴더>
+* ex. <dataset 이름> = /vln_nomad/train/vint_train/data/data_config.yaml에 있는 dataset 이름
+2. 저장된 image 파일과, pkl 파일을 test, train dataset으로 나눠줍니다(그렇기 때문에 bag 파일은 최소 2개 이상 존재해야 함).
+ (/vln_nomad/train)$ python3 data_split.py --data-dir <1번에서 생성한 out-dir> --dataset-name <임의의 dataset 이름>
+3. /vln_nomad/train/config/nomad.yaml 수정
+ex. # data_folder: 1번에서 생성한 out-dir
+    # train: 2번에서 생성한 train 폴더 path
+    # test: 2번에서 생성한 test 폴더 path
+4. train 실행
+ (/vln_nomad/train)$ python3 train.py
