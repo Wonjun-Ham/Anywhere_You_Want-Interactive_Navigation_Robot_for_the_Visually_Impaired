@@ -1,0 +1,42 @@
+파워셸 관리자 권한
+오른쪽 아래 포트에 연결하면 1-2여서
+usbipd attach --wsl --busid 1-2
+
+참고.
+리눅스에서 usb포트
+ls -al /dev/serial/by-id
+처음 연결한 거 /dev/ttyACM0 그 다음 게 1
+
+<나중에 이 핸드폰 윈도우에서 쓸 수 있으려면>
+PS C:\WINDOWS\system32> usbipd list
+Connected:
+BUSID  VID:PID    DEVICE                                                        STATE
+1-2    04e8:6860  Won Jun의 A40, SAMSUNG Mobile USB Modem, SAMSUNG Android ...  Shared (forced)
+=> shared(forced) 상태여서 이 핸드폰으로 윈도우에 연결되려면 차후에 detach, unbind 해야할 것
+https://taltal-dev-note.tistory.com/298 참고
+
+<명령어>
+cd /home/wonjun/projects/phone_mirroring && colcon build --symlink-install
+ => --symlink-install 옵션은 install 폴더에서 src 폴더의 주소를 갖고 있는 형태여서(값 copy가 아닌), 빌드 다시 안 해도 소스 코드의 변경 사항을 자동으로 반영할 수 있게 해줌
+
+터미널 두 개에서 
+source /home/wonjun/projects/phone_mirroring/install/setup.bash
+ros2 run android_screen_mirror screen_mirror_node
+
+source /home/wonjun/projects/phone_mirroring/install/setup.bash
+ros2 run android_screen_mirror subscribe_node
+
+ros2 topic info /android/screen_image
+
+
+screenshots.sh
+이건 안 해도 되는 듯 chmod +x /home/wonjun/projects/phone_mirroring/src/android_screen_mirror/android_screen_mirror/screenshots.sh
+/home/wonjun/projects/phone_mirroring/src/android_screen_mirror/android_screen_mirror/screenshots.sh
+
+To terminate, Ctrl+C, exit in one pane then
+ Ctrl+C, exit again
+
+ 옆 터미널로 가고 싶을 때 crtl+b 화살표
+
+ tmux kill-session -t myname  # kill session
+ tmux ls                      # list sessions
