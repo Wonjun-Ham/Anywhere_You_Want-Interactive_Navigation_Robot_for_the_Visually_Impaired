@@ -51,7 +51,7 @@ Src 폴더에 있는 파일들의 경우,
 - screenshots.sh : nomad에서 .sh 파일만 실행하면 관련된 태스크를 수행할 수 있도록 정리해둔 것처럼, 이 파일만 터미널에서 실행하면 이 프로젝트 실행 가능. tmux를 통해 screen_mirror_node.py와 subscribe_node.py가 각각의 패널에서 실행 시작
 - resource 폴더는 빌드시 관련한 warning이 떠서 생성해둔 빈 폴더
 - package.xml, setup.cfg, setup.py는 설정 파일들
-
+<br>
 
 ## 본인 기여 사항
 
