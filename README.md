@@ -339,7 +339,7 @@ ETRI에서는, ROS1이 사용된 기존의 코드를 ROS2가 사용되도록 업
   #### 2. 카메라 pixel format
   https://github.com/ros-drivers/usb_cam/blob/develop/src/camera_driver.cpp  
   https://ros-drivers.github.io/usb_cam/main/ 
-  두 문서를 참고하여 camera_front.yaml에서 ros2에 맞게 pixel_format: "yuyv2rgb"으로 수정하는 건 놓친 부분,
+  두 문서를 참고하여 camera_front.yaml에서 ros2에 맞게 pixel_format: "yuyv2rgb"으로 수정했습니다.
    
  
   #### 3. 리팩토링
